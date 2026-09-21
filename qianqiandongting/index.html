@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="千千动听官网提供海量免费在线音乐、高品质音频下载及音乐管理服务。包含流行歌曲、无损音质、网络电台及个性化播放列表功能。">
+    <meta name="keywords" content="千千动听官网,免费音乐下载,在线听歌,无损音乐,音乐播放器">
+    <title>千千动听官网-海量免费音乐与高品质音频播放平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --bg-body: #f5f6fa;
+            --bg-card: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 80px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.6);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .music-player-mock {
+            background: white;
+            width: 320px;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .music-player-mock:hover {
+            transform: perspective(1000px) rotateY(0) rotateX(0);
+        }
+
+        .album-art {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .track-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .track-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 60%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .control-btn.play {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cat-item {
+            position: relative;
+            height: 180px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .cat-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .cat-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
+
+        .cat-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .cat-overlay h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .cat-overlay span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Charts Section */
+        .charts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .chart-column {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .chart-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .rank-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .rank-item:hover {
+            background: #f8f9fa;
+        }
+
+        .rank-num {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50%;
+        }
+
+        .rank-num.top-1 { background: #ffeaa7; color: #d63031; }
+        .rank-num.top-2 { background: #fab1a0; color: #e17055; }
+        .rank-num.top-3 { background: #81ecec; color: #0984e3; }
+
+        .song-info {
+            flex: 1;
+        }
+
+        .song-title {
+            font-weight: 600;
+            display: block;
+        }
+
+        .song-artist {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .song-actions {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #b2bec3;
+            max-width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #b2bec3;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #636e72;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Simplified for mobile demo */
+            }
+            
+            .nav-actions .btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .charts-container {
+                flex-direction: column;
+            }
+
+            .chart-column {
+                padding: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+                千千动听<span>官网</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">流行音乐</a></li>
+                    <li><a href="#">无损音质</a></li>
+                    <li><a href="#">网络电台</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费注册</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>探索无限音乐，<br>感受<span>千千动听</span>的魅力</h1>
+                    <p>汇集全网海量正版资源，提供高品质无损音频流媒体服务。无论是流行金曲还是独立小众，在这里都能找到属于你的节奏。</p>
+                    <div class="hero-tags">
+                        <span class="tag">🎧 高品质音质</span>
+                        <span class="tag">🚀 极速播放</span>
+                        <span class="tag">☁️ 云端同步</span>
+                    </div>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-start;">
+                        <a href="#" class="btn btn-primary" style="padding: 12px 30px;">开始播放</a>
+                        <a href="#" class="btn btn-outline" style="padding: 12px 30px;">下载客户端</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="music-player-mock">
+                        <div class="album-art">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="track-info">
+                            <h3>夜曲</h3>
+                            <p>周杰伦</p>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn">⏮</button>
+                            <button class="control-btn play">▶</button>
+                            <button class="control-btn">⏭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">为什么选择千千动听</h2>
+                    <p class="section-desc">我们致力于为您提供最极致的听觉体验，技术驱动品质生活。</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎵</div>
+                        <h3>海量曲库</h3>
+                        <p>收录超过千万首歌曲，涵盖流行、摇滚、古典、民谣等所有风格，满足不同用户的听觉需求。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🔊</div>
+                        <h3>无损音质</h3>
+                        <p>支持FLAC、APE等无损格式播放，配合专业音频解码算法，还原录音室级别的音质体验。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">☁️</div>
+                        <h3>云端同步</h3>
+                        <p>创建您的私人歌单，自动同步至所有设备，随时随地无缝切换，享受连贯的音乐之旅。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📻</div>
+                        <h3>特色电台</h3>
+                        <p>智能推荐算法，为您定制个性化电台频道，根据您的听歌习惯推送新歌和同风格佳作。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="section" style="background-color: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">音乐分类浏览</h2>
+                    <p class="section-desc">按心情、场景或风格快速找到您喜欢的音乐。</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="cat-item">
+                        <img src="https://picsum.photos/seed/pop/400/300" alt="流行音乐">
+                        <div class="cat-overlay">
+                            <h3>流行音乐</h3>
+                            <span>热门榜单 · 120万首</span>
+                        </div>
+                    </div>
+                    <div class="cat-item">
+                        <img src="https://picsum.photos/seed/rock/400/300" alt="摇滚乐">
+                        <div class="cat-overlay">
+                            <h3>摇滚乐</h3>
+                            <span>经典怀旧 · 45万首</span>
+                        </div>
+                    </div>
+                    <div class="cat-item">
+                        <img src="https://picsum.photos/seed/electronic/400/300" alt="电子音乐">
+                        <div class="cat-overlay">
+                            <h3>电子音乐</h3>
+                            <span>动感节拍 · 80万首</span>
+                        </div>
+                    </div>
+                    <div class="cat-item">
+                        <img src="https://picsum.photos/seed/country/400/300" alt="民谣">
+                        <div class="cat-overlay">
+                            <h3>民谣</h3>
+                            <span>清新治愈 · 30万首</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">本周热歌榜单</h2>
+                    <p class="section-desc">实时更新的播放量统计，掌握当下最火的音乐趋势。</p>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-column">
+                        <div class="chart-header">
+                            <div class="chart-title">
+                                <span style="color:var(--primary-color)">🔥</span> 千千热榜
+                            </div>
+                            <a href="#" style="font-size:0.9rem; color:var(--primary-color)">查看更多 ></a>
+                        </div>
+                        <div class="rank-list">
+                            <div class="rank-item">
+                                <div class="rank-num top-1">1</div>
+                                <div class="song-info">
+                                    <span class="song-title">如愿</span>
+                                    <span class="song-artist">王菲 / 王力宏</span>
+                                </div>
+                                <div class="song-actions">播放</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-num top-2">2</div>
+                                <div class="song-info">
+                                    <span class="song-title">孤勇者</span>
+                                    <span class="song-artist">陈奕迅</span>
+                                </div>
+                                <div class="song-actions">播放</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-num top-3">3</div>
+                                <div class="song-info">
+                                    <span class="song-title">起风了</span>
+                                    <span class="song-artist">买辣椒也用券</span>
+                                </div>
+                                <div class="song-actions">播放</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-num">4</div>
+                                <div class="song-info">
+                                    <span class="song-title">漠河舞厅</span>
+                                    <span class="song-artist">柳爽</span>
+                                </div>
+                                <div class="song-actions">播放</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-num">5</div>
+                                <div class="song-info">
+                                    <span class="song-title">花海</span>
+                                    <span class="song-artist">周杰伦</span>
+                                </div>
+                                <div class="song-actions">播放</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">准备好开启音乐之旅了吗？</h2>
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px;">注册千千动听账号，享受VIP会员特权，解锁所有音质与离线下载功能。</p>
+                <a href="#" class="btn" style="background: white; color: var(--primary-color); padding: 14px 40px; font-size: 1.1rem;">立即免费注册</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>千千动听</h2>
+                    <p>专注于高品质音乐分享与传播，致力于为用户提供最舒适的在线听歌体验。版权所有，违者必究。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">会员服务</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪音乐</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 千千动听音乐平台 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
