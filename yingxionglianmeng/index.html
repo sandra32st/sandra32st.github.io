@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="英雄联盟段位查询与完整晋升指南。详细解析从黑铁到王者各段位机制、晋级规则、胜点计算及排位赛技巧，助你快速提升排位段位。">
+    <meta name="keywords" content="英雄联盟段位, LOL排位机制, 英雄联盟段位晋升, LOL王者段位, 英雄联盟段位表">
+    <title>英雄联盟段位-排位晋升机制与晋级规则详解</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #c8aa6e;
+            --primary-hover: #bfa065;
+            --bg-dark: #0f1923;
+            --bg-card: #161e2e;
+            --text-main: #f0f0f0;
+            --text-sub: #a0a0a0;
+            --accent-iron: #7b7b7b;
+            --accent-bronze: #b87333;
+            --accent-silver: #c0c0c0;
+            --accent-gold: #fae078;
+            --accent-plat: #5796f5;
+            --accent-dia: #ad7ef7;
+            --accent-master: #f5b425;
+            --accent-grandmaster: #d0a5ff;
+            --accent-challenger: #ff4d4d;
+            --accent-rank: #c8aa6e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: rgba(15, 25, 35, 0.95);
+            border-bottom: 1px solid rgba(200, 170, 110, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: #fff; }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15,25,35,0) 0%, var(--bg-dark) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(200, 170, 110, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 段位概览卡片 */
+        .ranks-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-sub);
+        }
+
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .rank-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .rank-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .rank-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .rank-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        /* 段位详情 */
+        .rank-detail-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .rank-info {
+            text-align: center;
+            padding-right: 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .rank-info h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .rank-info .tier-name {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        .rank-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .stat-box h4 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .stat-box span {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .rank-desc {
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        .requirements {
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .requirements h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .req-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .req-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        /* 晋级机制详解 */
+        .mechanics-section {
+            padding: 60px 0;
+        }
+
+        .mechanics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .mechanic-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .mechanic-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mechanic-card p {
+            color: var(--text-sub);
+            font-size: 15px;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background-color: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            list-style: none;
+            position: relative;
+            padding-right: 50px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-sub);
+            font-size: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #0b111a;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .rank-detail-wrapper { grid-template-columns: 1fr; }
+            .rank-info { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px; margin-bottom: 20px; }
+            .mechanics-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; } /* 简化处理，移动端隐藏菜单 */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span>⚔️</span> LOL排位百科
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">段位总览</a></li>
+                    <li><a href="#mechanics">晋级规则</a></li>
+                    <li><a href="#tips">上分技巧</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>英雄联盟段位体系</h1>
+                <p>从黑铁到王者的完整晋升路径与机制解析，助你理解每一场排位赛的意义。</p>
+            </div>
+        </section>
+
+        <!-- Ranks Overview -->
+        <section class="ranks-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>全段位一览</h2>
+                    <p>当前赛季共有8个大段位，分为黑铁、青铜、白银、黄金、铂金、钻石、大师、王者</p>
+                </div>
+                <div class="ranks-grid">
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-iron);">I</div>
+                        <div class="rank-name">黑铁</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-bronze);">II</div>
+                        <div class="rank-name">青铜</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-silver);">III</div>
+                        <div class="rank-name">白银</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-gold);">IV</div>
+                        <div class="rank-name">黄金</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-plat);">V</div>
+                        <div class="rank-name">铂金</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-dia);">VI</div>
+                        <div class="rank-name">钻石</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-master);">M</div>
+                        <div class="rank-name">大师</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-grandmaster);">G</div>
+                        <div class="rank-name">宗师</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-icon" style="color: var(--accent-challenger);">C</div>
+                        <div class="rank-name">王者</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Rank Info -->
+        <section class="container">
+            <div class="section-title">
+                <h2>段位机制详解</h2>
+                <p>点击上方图标查看各段位的具体晋级规则与胜点需求</p>
+            </div>
+            
+            <div class="rank-detail-wrapper">
+                <!-- Default: Diamond -->
+                <div class="rank-info">
+                    <div class="rank-icon" style="background: linear-gradient(135deg, #2a2a2a, #5796f5); color: #fff;">VI</div>
+                    <h3>钻石段位</h3>
+                    <div class="tier-name">Diamond</div>
+                    
+                    <div class="rank-stats">
+                        <div class="stat-box">
+                            <h4>100</h4>
+                            <span>晋级胜点</span>
+                        </div>
+                        <div class="stat-box">
+                            <h4>2</h4>
+                            <span>晋级场数</span>
+                        </div>
+                    </div>
+
+                    <div class="rank-desc">
+                        钻石段位是衡量玩家技术水平的分水岭。在此段位，操作失误会被无限放大，意识与团队的配合成为决定胜负的关键。
+                    </div>
+                </div>
+
+                <div class="rank-content">
+                    <div class="requirements">
+                        <h4>晋级规则</h4>
+                        <ul class="req-list">
+                            <li>当前段位达到100胜点。</li>
+                            <li>开启晋级赛，共进行2场。</li>
+                            <li>2场全胜即可晋级至下一个小段位。</li>
+                            <li>若1胜1负或2负，则胜点重置为100。</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="requirements">
+                        <h4>降级机制</h4>
+                        <ul class="req-list">
+                            <li>连续3场失败将直接掉段。</li>
+                            <li>偶数段位（如钻石IV）掉段后不会进入小段位赛，而是直接掉至下一大段位（如铂金）。</li>
+                            <li>奇数段位（如钻石III）掉段后需要重新进行小段位晋级。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mechanics Section -->
+        <section id="mechanics" class="mechanics-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>排位核心机制</h2>
+                </div>
+                <div class="mechanics-grid">
+                    <article class="mechanic-card">
+                        <h3>🏆 胜点系统</h3>
+                        <p>每场排位赛的胜负直接决定胜点增减。胜利获得胜点，失败则扣除胜点。段位越低，单场胜点波动越大；段位越高，胜点获取越稳健。在晋级赛阶段，胜点不会因为失败而清零。</p>
+                    </article>
+                    <article class="mechanic-card">
+                        <h3>⚔️ 晋级赛规则</h3>
+                        <p>当胜点达到100点时，系统会自动发放晋级赛门票。你需要赢得2场胜利即可跨越一个大段位。如果不幸输掉比赛，胜点将重置回100，你需要重新积累胜点。</p>
+                    </article>
+                    <article class="mechanic-card">
+                        <h3>🔄 排位分</h3>
+                        <p>排位分是段位的底层支撑，通常比段位更精细。即使段位相同，排位分的差距也能反映玩家近期的状态。保持高排位分有助于在赛季结算时获得更高的段位保护分。</p>
+                    </article>
+                    <article class="mechanic-card">
+                        <h3>🛡️ 段位保护</h3>
+                        <p>在赛季结束前，系统会根据你的排位分给予额外的保护分。即使输掉晋级赛，只要排位分足够高，也有可能保留段位而不掉落。这是高阶玩家对抗赛季末“掉段潮”的重要机制。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <details open>
+                <summary>黑铁到钻石的胜点差距是多少？</summary>
+                <div class="faq-content">
+                    普通排位赛中，黑铁段位单场胜利通常获得15-25胜点，而钻石段位单场胜利通常获得20-30胜点。段位越高，单场胜点获取的上限越高。晋级赛阶段，无论段位高低，均为100胜点起跑。
+                </div>
+            </details>
+            <details>
+                <summary>掉段后如何快速重返原段位？</summary>
+                <div class="faq-content">
+                    快速重返原段位的关键在于保持连胜。在掉段后的前几场比赛中，连胜的胜点加成较高，且能快速积累胜点。建议专注于个人技术的提升和心态的调整，避免在低段位进行无意义的举报和争吵。
+                </div>
+            </details>
+            <details>
+                <summary>赛季结算时掉段规则是怎样的？</summary>
+                <div class="faq-content">
+                    赛季结算时，如果你的排位分低于当前段位的基准线，系统会自动进行掉段。如果排位分较高，则获得保护分，可能不会掉段甚至提升一个小段位。保护分通常基于你当前段位的排位分百分比计算。
+                </div>
+            </details>
+            <details>
+                <summary>大师及以上段位有什么特殊规则？</summary>
+                <div class="faq-content">
+                    大师、宗师和王者段位没有晋级赛。只要达到该段位的胜点门槛（例如大师需要2000胜点），即可直接晋升。但掉段机制更为严格，连续失败容易导致掉回钻石段位。
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>本站为英雄联盟排位机制科普站点，所有游戏版权归 Riot Games 所有。</p>
+            <p style="margin-top: 10px; opacity: 0.5;">© 2023 LOL Rank Guide</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
