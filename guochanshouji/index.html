@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2024年最新国产手机排名榜单，涵盖华为、小米、OPPO、vivo、荣耀等主流品牌旗舰机型评测与选购指南。提供性能、拍照、续航等维度对比，助您挑选最适合的国产手机。">
+    <meta name="keywords" content="国产手机排名,华为手机排名,小米手机排名,OPPO手机排名,vivo手机排名,手机选购指南,手机评测">
+    <title>国产手机排名 - 2024年最新旗舰机型评测与选购指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #475569;
+            --border-color: #e2e8f0;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-sub);
+        }
+
+        .search-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 筛选标签 */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* 排行榜列表 */
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .rank-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            align-items: center;
+        }
+
+        .rank-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .rank-badge {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #cbd5e1;
+            width: 60px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .rank-item:nth-child(1) .rank-badge { color: #fbbf24; }
+        .rank-item:nth-child(2) .rank-badge { color: #94a3b8; }
+        .rank-item:nth-child(3) .rank-badge { color: #b45309; }
+
+        .rank-info {
+            flex: 1;
+            padding: 0 1.5rem;
+        }
+
+        .rank-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .rank-brand {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rank-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .tag.highlight {
+            background-color: #fff7ed;
+            color: var(--accent-orange);
+        }
+
+        .rank-score {
+            text-align: right;
+            min-width: 80px;
+        }
+
+        .score-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* 对比表格 */
+        .comparison-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1.1rem;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .compare-table th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: var(--text-sub);
+            width: 20%;
+        }
+
+        .compare-table td {
+            color: var(--text-main);
+        }
+
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .spec-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* 选购建议 */
+        .guide-section {
+            background-color: white;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guide-item h3::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .guide-item p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--text-sub);
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f8fafc;
+            padding: 0 1.25rem;
+        }
+
+        .faq-answer p {
+            padding: 1.25rem 0;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .rank-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .rank-info {
+                padding: 0;
+            }
+
+            .rank-tags {
+                justify-content: center;
+            }
+
+            .rank-score {
+                text-align: center;
+            }
+
+            .compare-table th, .compare-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span>📱</span> 手机评测榜
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">国产手机排名</a>
+                <a href="#">手机参数对比</a>
+                <a href="#">选购指南</a>
+                <a href="#">快充技术</a>
+                <a href="#">影像评测</a>
+            </nav>
+            <button class="search-btn">🔍 搜索机型</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>2024年国产手机排名<br>旗舰机选购全攻略</h1>
+                <p>基于性能、影像、续航及综合口碑，为您深度解析当前市场上最受欢迎的国产手机排行榜，助您做出明智选择。</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- 筛选 -->
+            <div class="filter-bar">
+                <button class="filter-btn active">综合榜单</button>
+                <button class="filter-btn">性能旗舰</button>
+                <button class="filter-btn">影像大师</button>
+                <button class="filter-btn">长续航</button>
+                <button class="filter-btn">性价比</button>
+            </div>
+
+            <!-- 排行榜列表 -->
+            <section class="ranking-list">
+                <!-- 第一名 -->
+                <article class="rank-item">
+                    <div class="rank-badge">1</div>
+                    <div class="rank-info">
+                        <h2 class="rank-title">华为 Mate 60 Pro</h2>
+                        <span class="rank-brand">HUAWEI / 华为</span>
+                        <div class="rank-tags">
+                            <span class="tag highlight">卫星通信</span>
+                            <span class="tag">麒麟芯片</span>
+                            <span class="tag">XMAGE影像</span>
+                        </div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="score-val">9.8</div>
+                        <div class="score-label">综合评分</div>
+                    </div>
+                </article>
+
+                <!-- 第二名 -->
+                <article class="rank-item">
+                    <div class="rank-badge">2</div>
+                    <div class="rank-info">
+                        <h2 class="rank-title">vivo X100 Pro</h2>
+                        <span class="rank-brand">vivo</span>
+                        <div class="rank-tags">
+                            <span class="tag highlight">蔡司光学</span>
+                            <span class="tag">一英寸主摄</span>
+                            <span class="tag">蓝晶芯片</span>
+                        </div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="score-val">9.6</div>
+                        <div class="score-label">综合评分</div>
+                    </div>
+                </article>
+
+                <!-- 第三名 -->
+                <article class="rank-item">
+                    <div class="rank-badge">3</div>
+                    <div class="rank-info">
+                        <h2 class="rank-title">小米 14 Ultra</h2>
+                        <span class="rank-brand">XIAOMI / 小米</span>
+                        <div class="rank-tags">
+                            <span class="tag highlight">徕卡全明星</span>
+                            <span class="tag">骁龙8 Gen3</span>
+                            <span class="tag">二英寸大底</span>
+                        </div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="score-val">9.5</div>
+                        <div class="score-label">综合评分</div>
+                    </div>
+                </article>
+
+                <!-- 第四名 -->
+                <article class="rank-item">
+                    <div class="rank-badge">4</div>
+                    <div class="rank-info">
+                        <h2 class="rank-title">OPPO Find X7 Ultra</h2>
+                        <span class="rank-brand">OPPO</span>
+                        <div class="rank-tags">
+                            <span class="tag">哈苏影像</span>
+                            <span class="tag">双潜望长焦</span>
+                            <span class="tag">护眼屏</span>
+                        </div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="score-val">9.4</div>
+                        <div class="score-label">综合评分</div>
+                    </div>
+                </article>
+
+                <!-- 第五名 -->
+                <article class="rank-item">
+                    <div class="rank-badge">5</div>
+                    <div class="rank-info">
+                        <h2 class="rank-title">荣耀 Magic 6 Pro</h2>
+                        <span class="rank-brand">HONOR / 荣耀</span>
+                        <div class="rank-tags">
+                            <span class="tag highlight">青海湖电池</span>
+                            <span class="tag">荣耀绿洲屏</span>
+                            <span class="tag">鹰眼相机</span>
+                        </div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="score-val">9.3</div>
+                        <div class="score-label">综合评分</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 核心参数对比 -->
+            <section class="comparison-section">
+                <div class="section-header">
+                    <h2 class="section-title">热门机型核心参数对比</h2>
+                    <a href="#" style="color: var(--primary-color); font-weight: 600;">查看完整参数表 &rarr;</a>
+                </div>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>对比项目</th>
+                            <th>华为 Mate 60 Pro</th>
+                            <th>vivo X100 Pro</th>
+                            <th>小米 14 Ultra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>处理器</td>
+                            <td>麒麟9000S</td>
+                            <td>天玑9300+</td>
+                            <td>骁龙8 Gen 3</td>
+                        </tr>
+                        <tr>
+                            <td>主摄传感器</td>
+                            <td>5000万像素 IMX766</td>
+                            <td>1英寸 IMX989</td>
+                            <td>一英寸LYT-900</td>
+                        </tr>
+                        <tr>
+                            <td>屏幕素质</td>
+                            <td>1.82英寸 LTPO</td>
+                            <td>6.78英寸 2K</td>
+                            <td>6.73英寸 2K</td>
+                        </tr>
+                        <tr>
+                            <td>电池与快充</td>
+                            <td>5000mAh / 88W</td>
+                            <td>5400mAh / 100W</td>
+                            <td>5300mAh / 90W</td>
+                        </tr>
+                        <tr>
+                            <td>特色功能</td>
+                            <td>卫星通话</td>
+                            <td>百倍变焦</td>
+                            <td>徕卡光学</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 选购指南 -->
+            <section class="guide-section">
+                <div class="container">
+                    <div class="section-header" style="border:none; padding-bottom:0;">
+                        <h2 class="section-title">2024年手机选购指南</h2>
+                    </div>
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <h3>性能需求</h3>
+                            <p>如果您主要玩大型游戏（如《原神》、《星穹铁道》），建议优先选择搭载骁龙8 Gen 3或天玑9300+处理器的机型，这些芯片在图形渲染和AI性能上表现最佳。</p>
+                        </div>
+                        <div class="guide-item">
+                            <h3>摄影爱好者</h3>
+                            <p>对于摄影爱好者，关注一英寸大底传感器是关键。vivo X100 Pro和小米14 Ultra在夜景和人像拍摄上具有明显优势，而华为Mate 60 Pro则适合喜欢人文纪实风格的用户。</p>
+                        </div>
+                        <div class="guide-item">
+                            <h3>续航焦虑</h3>
+                            <p>如果您经常出差或无法及时充电，建议选择配备大容量电池（5000mAh以上）且支持快充的手机。荣耀Magic 6 Pro和部分vivo机型在续航表现上非常出色。</p>
+                        </div>
+                        <div class="guide-item">
+                            <h3>系统生态</h3>
+                            <p>考虑您现有的设备生态。如果您使用华为手机，鸿蒙系统的互联体验最佳；如果习惯安卓，小米澎湃OS的跨设备协同也非常流畅。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="container" style="max-width: 800px; margin-bottom: 4rem;">
+                <h2 class="section-title" style="margin-bottom: 2rem; font-size: 1.8rem;">常见问题 (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">国产手机排名每年都会变吗？</button>
+                    <div class="faq-answer">
+                        <p>是的，国产手机市场更新换代非常快。随着新芯片的发布和新技术的应用（如潜望长焦、AI大模型），排名会随着评测机构的更新和用户口碑的变化而动态调整。建议每年下半年查看最新的榜单。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">预算有限，哪款手机性价比最高？</button>
+                    <div class="faq-answer">
+                        <p>在2000-3000元价位段，Redmi K系列、iQOO Neo系列以及真我GT系列通常提供了极高的性价比。它们在性能释放和屏幕素质上往往接近旗舰机，但价格更为亲民。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">买新不买旧是真的吗？</button>
+                    <div class="faq-answer">
+                        <p>对于国产手机而言，通常情况下“买新不买旧”是成立的。新款手机在处理器性能、相机算法、电池寿命和系统安全补丁方面都有明显提升。除非旧款机型有极高的性价比折扣，否则建议选择最新发布的产品。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p>本站致力于提供客观、真实的国产手机评测与排名数据，帮助用户了解最新的科技产品动态。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>热门品牌</h4>
+                    <ul>
+                        <li><a href="#">华为手机</a></li>
+                        <li><a href="#">小米手机</a></li>
+                        <li><a href="#">OPPO手机</a></li>
+                        <li><a href="#">vivo手机</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>选购建议</h4>
+                    <ul>
+                        <li><a href="#">学生党手机推荐</a></li>
+                        <li><a href="#">拍照手机选购</a></li>
+                        <li><a href="#">游戏手机推荐</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 国产手机排名网. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠逻辑
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                
+                // 关闭其他打开的项
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                // 切换当前项
+                faqItem.classList.toggle('active');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+
+        // 筛选按钮交互
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+  </html>
