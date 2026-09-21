@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侠义道2 - 经典国风网游资料站与攻略指南</title>
+    <meta name="description" content="侠义道2官网 - 沉浸式国风武侠MMORPG，提供职业介绍、新手攻略、副本玩法、门派技能及最新游戏资讯。重温江湖恩怨，体验快意恩仇的武侠世界。">
+    <meta name="keywords" content="侠义道2, 侠义道2官网, 国风网游, 武侠攻略, 职业推荐, 游戏资讯">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --secondary-color: #1a1a2e;
+            --accent-color: #ffd700;
+            --text-main: #333;
+            --text-light: #666;
+            --bg-body: #f4f6f8;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-stack: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(138, 43, 226, 0.8)), url('https://picsum.photos/seed/martial/1920/600') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 12px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* 快速导航 */
+        .quick-nav {
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            padding-bottom: 40px;
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .quick-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quick-card-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .quick-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .quick-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* 主要内容区 */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* 职业介绍 */
+        .jobs-section {
+            background-color: #fff;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .job-card {
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            background: #fff;
+        }
+
+        .job-card:hover {
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        .job-img {
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .job-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .job-info {
+            padding: 25px;
+        }
+
+        .job-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .job-tags span {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .job-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        /* 游戏资讯 */
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            background: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .news-item:hover {
+            transform: translateX(5px);
+        }
+
+        .news-thumb {
+            width: 240px;
+            height: 160px;
+            flex-shrink: 0;
+        }
+
+        .news-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .news-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .sidebar-box {
+            background: #fff;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: bold;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: #eee;
+            color: #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background: #ffd700; color: #fff; }
+        .rank-list li:nth-child(2) .rank-num { background: #c0c0c0; color: #fff; }
+        .rank-list li:nth-child(3) .rank-num { background: #cd7f32; color: #fff; }
+
+        .rank-name {
+            font-size: 14px;
+            color: var(--text-main);
+            flex: 1;
+        }
+
+        .rank-val {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 攻略区 */
+        .guide-section {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 60px 0;
+        }
+
+        .guide-section .section-title h2 {
+            color: #fff;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .guide-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            transition: background 0.3s;
+        }
+
+        .guide-card:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .guide-tag {
+            font-size: 12px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .guide-card h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .guide-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 50px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .quick-nav-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-thumb {
+                width: 100%;
+                height: 180px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span>侠义道2</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#jobs">门派职业</a></li>
+                    <li><a href="#news">游戏资讯</a></li>
+                    <li><a href="#guide">新手攻略</a></li>
+                    <li><a href="#community">玩家社区</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>江湖路远，侠义为先</h1>
+            <p>经典国风武侠MMORPG《侠义道2》回归，重温快意恩仇的江湖岁月。集结各路英雄，共铸武林传奇。</p>
+            <a href="#" class="cta-btn">立即下载游戏</a>
+        </div>
+    </section>
+
+    <!-- 快速导航 -->
+    <div class="container quick-nav">
+        <div class="quick-nav-grid">
+            <a href="#jobs" class="quick-card">
+                <span class="quick-card-icon">⚔️</span>
+                <h3>职业选择</h3>
+                <p>五大门派，各具特色</p>
+            </a>
+            <a href="#guide" class="quick-card">
+                <span class="quick-card-icon">📖</span>
+                <h3>新手入门</h3>
+                <p>从零开始，快速升级</p>
+            </a>
+            <a href="#news" class="quick-card">
+                <span class="quick-card-icon">📰</span>
+                <h3>最新动态</h3>
+                <p>版本更新与活动公告</p>
+            </a>
+            <a href="#community" class="quick-card">
+                <span class="quick-card-icon">👥</span>
+                <h3>玩家论坛</h3>
+                <p>结交好友，切磋技艺</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- 职业介绍 -->
+    <section id="jobs" class="jobs-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>门派职业</h2>
+                <p>选择你的江湖道路，体验不同的战斗风格</p>
+            </div>
+            <div class="jobs-grid">
+                <!-- 武当 -->
+                <article class="job-card">
+                    <div class="job-img">
+                        <img src="https://picsum.photos/seed/wudang/400/300" alt="武当派">
+                    </div>
+                    <div class="job-info">
+                        <h3>武当派 <span style="font-size:14px; color:#999; font-weight:normal;">远程控制</span></h3>
+                        <div class="job-tags">
+                            <span>内功</span><span>控场</span><span>群攻</span>
+                        </div>
+                        <p class="job-desc">以太极阴阳之理为根基，擅长远程法术攻击与群体控制，是团队中不可或缺的辅助与输出核心。</p>
+                    </div>
+                </article>
+
+                <!-- 丐帮 -->
+                <article class="job-card">
+                    <div class="job-img">
+                        <img src="https://picsum.photos/seed/qaibang/400/300" alt="丐帮">
+                    </div>
+                    <div class="job-info">
+                        <h3>丐帮 <span style="font-size:14px; color:#999; font-weight:normal;">近战爆发</span></h3>
+                        <div class="job-tags">
+                            <span>高攻</span><span>闪避</span><span>群攻</span>
+                        </div>
+                        <p class="job-desc">行走江湖，仗义疏财。丐帮弟子身法灵动，拥有极强的单体爆发能力，近身肉搏无惧任何对手。</p>
+                    </div>
+                </article>
+
+                <!-- 峨眉 -->
+                <article class="job-card">
+                    <div class="job-img">
+                        <img src="https://picsum.photos/seed/emei/400/300" alt="峨眉派">
+                    </div>
+                    <div class="job-info">
+                        <h3>峨眉派 <span style="font-size:14px; color:#999; font-weight:normal;">治疗辅助</span></h3>
+                        <div class="job-tags">
+                            <span>治疗</span><span>增益</span><span>远程</span>
+                        </div>
+                        <p class="job-desc">慈悲为怀，以柔克刚。峨眉弟子精通医术，能为队友提供强大的生命恢复与状态增益，守护队友周全。</p>
+                    </div>
+                </article>
+
+                <!-- 明教 -->
+                <article class="job-card">
+                    <div class="job-img">
+                        <img src="https://picsum.photos/seed/mingjiao/400/300" alt="明教">
+                    </div>
+                    <div class="job-info">
+                        <h3>明教 <span style="font-size:14px; color:#999; font-weight:normal;">刺客输出</span></h3>
+                        <div class="job-tags">
+                            <span>高暴击</span><span>潜行</span><span>爆发</span>
+                        </div>
+                        <p class="job-desc">来自西域的神秘组织，行事诡秘。擅长潜行与暗杀，拥有极高的暴击伤害，是战场上的致命杀手。</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏资讯 -->
+    <section id="news" class="news-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>最新资讯</h2>
+                <p>掌握江湖动态，不错过任何精彩活动</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://picsum.photos/seed/news1/300/200" alt="游戏更新">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">2023-10-24</div>
+                            <h3 class="news-title"><a href="#">版本更新：新副本“剑冢”开启，挑战极限BOSS</a></h3>
+                            <p class="news-excerpt">为了回馈广大侠士的热爱，本次更新将开放全新高难度副本，掉落稀有装备与绝版坐骑。请各大门派做好准备，共赴剑冢一探究竟。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://picsum.photos/seed/news2/300/200" alt="节日活动">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">2023-10-22</div>
+                            <h3 class="news-title"><a href="#">双节同庆：中秋国庆限时活动汇总</a></h3>
+                            <p class="news-excerpt">在这个金秋十月，我们将举办为期两周的庆典活动。登录即送双倍经验丹，参与门派大比可获得专属称号，更有机会赢取稀有道具。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://picsum.photos/seed/news3/300/200" alt="系统公告">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">2023-10-20</div>
+                            <h3 class="news-title"><a href="#">【系统公告】关于优化游戏网络延迟的说明</a></h3>
+                            <p class="news-excerpt">为了提升各位玩家的游戏体验，官方将对服务器进行网络节点优化，预计将于今晚凌晨进行维护更新，请留意服务器状态。</p>
+                        </div>
+                    </article>
+                </div>
+
+                <aside>
+                    <div class="sidebar-box">
+                        <h4 class="sidebar-title">热门排行</h4>
+                        <ul class="rank-list">
+                            <li>
+                                <span class="rank-num">1</span>
+                                <span class="rank-name">武当山论剑大会</span>
+                                <span class="rank-val">TOP 1</span>
+                            </li>
+                            <li>
+                                <span class="rank-num">2</span>
+                                <span class="rank-name">全服第一帮派争夺</span>
+                                <span class="rank-val">TOP 2</span>
+                            </li>
+                            <li>
+                                <span class="rank-num">3</span>
+                                <span class="rank-name">侠客行跨服战</span>
+                                <span class="rank-val">TOP 3</span>
+                            </li>
+                            <li>
+                                <span class="rank-num">4</span>
+                                <span class="rank-name">天梯赛排行榜</span>
+                                <span class="rank-val">TOP 4</span>
+                            </li>
+                            <li>
+                                <span class="rank-num">5</span>
+                                <span class="rank-name">最新时装鉴赏</span>
+                                <span class="rank-val">HOT</span>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- 攻略指南 -->
+    <section id="guide" class="guide-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>新手攻略</h2>
+                <p>从入门到精通，助你成为江湖高手</p>
+            </div>
+            <div class="guide-grid">
+                <article class="guide-card">
+                    <span class="guide-tag">新手必读</span>
+                    <h4>侠义道2快速升级指南</h4>
+                    <p>新手上线如何选择路线？主线任务、支线任务与日常活动的最佳搭配方案，助你快速达到60级。</p>
+                </article>
+                <article class="guide-card">
+                    <span class="guide-tag">装备打造</span>
+                    <h4>装备强化与镶嵌技巧</h4>
+                    <p>如何利用强化石提升装备属性？镶嵌系统的宝石选择与搭配，决定你的战斗力上限。</p>
+                </article>
+                <article class="guide-card">
+                    <span class="guide-tag">PVP技巧</span>
+                    <h4>门派战实战心得</h4>
+                    <p>不同门派在团队战中的定位与配合技巧，掌握这些细节，让你在竞技场中无往不利。</p>
+                </article>
+                <article class="guide-card">
+                    <span class="guide-tag">资源获取</span>
+                    <h4>元宝获取途径详解</h4>
+                    <p>除了充值，游戏内有哪些免费获取元宝的方法？每日必做任务与隐藏福利大揭秘。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="community">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于游戏</h4>
+                    <ul>
+                        <li><a href="#">游戏简介</a></li>
+                        <li><a href="#">游戏下载</a></li>
+                        <li><a href="#">运营团队</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>玩家支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">客服中心</a></li>
+                        <li><a href="#">安全中心</a></li>
+                        <li><a href="#">防沉迷系统</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>游戏社区</h4>
+                    <ul>
+                        <li><a href="#">官方论坛</a></li>
+                        <li><a href="#">玩家交流群</a></li>
+                        <li><a href="#">微博关注</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">游戏发行商官网</a></li>
+                        <li><a href="#">兄弟游戏推荐</a></li>
+                        <li><a href="#">游戏媒体联盟</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 侠义道2 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
